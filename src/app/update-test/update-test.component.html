@@ -1,0 +1,143 @@
+<app-logout></app-logout>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>UPDATE TEST</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>TEST ID: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.id" readonly="readonly" #id='ngModel'
+                name="id" ngModel class="form-control">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>TEST TITLE: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.title" #title='ngModel' name="title" ngModel
+                class="form-control">
+
+            <div *ngIf='title.errors
+                        && title.touched' class="alert alert-danger">
+
+                <div [hidden]='!title.errors.required'>
+
+                    Provide Test Title
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>TOTAL MARKS: </label>
+
+            <input required minlength="0" type="number" [(ngModel)]="obj1.testTotalMarks" #testTotalMarks='ngModel' name="testTotalMarks"
+                ngModel class="form-control">
+
+            <div *ngIf='testTotalMarks.errors && testTotalMarks.touched' class="alert alert-danger">
+
+           
+
+                <div [hidden]='!testTotalMarks.errors.required'> Provide Test Total Marks</div>
+
+            </div>
+        </div>
+
+<div class="form-group">
+
+            <label>TOTAL MARKS SCORED: </label>
+
+            <input required minlength="0" type="number" [(ngModel)]="obj1.testMarksScored" #testMarksScored='ngModel' name="testMarksScored"
+                ngModel class="form-control">
+
+            <div *ngIf='testMarksScored.errors && testMarksScored.touched' class="alert alert-danger">
+
+           
+
+                <div [hidden]='!testMarksScored.errors.required'> Provide Test Total Marks Scored</div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>TEST DURATION: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.duration" #duration='ngModel' name="duration"
+                ngModel class="form-control">
+
+            <div *ngIf='duration.errors && duration.touched' class="alert alert-danger">
+
+            
+
+                <div [hidden]='!duration.errors.required'> Provide Test duration</div>
+
+           </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>START TIME: </label>
+
+            <input required minlength="1" type="datetime-local" [(ngModel)]="obj1.starttime" #starttime='ngModel' name="starttime"
+                ngModel class="form-control">
+
+            <div *ngIf='starttime.errors
+                        && starttime.touched' class="alert alert-danger">
+
+                <div [hidden]='!starttime.errors.required'>
+
+                    Provide Test Start Time
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    
+
+    <div class="form-group">
+
+        <label>END TIME: </label>
+
+        <input required minlength="1" type="datetime-local" [(ngModel)]="obj1.endtime" #endtime='ngModel' name="endtime"
+            ngModel class="form-control">
+
+        <div *ngIf='endtime.errors
+                    && endtime.touched' class="alert alert-danger">
+
+            <div [hidden]='!endtime.errors.required'>
+
+                Provide Test End Time
+
+            </div>
+
+        </div>
+
+    </div>
+    
+
+        <input [disabled]="userForm.invalid" type="submit" value="Edit Test" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

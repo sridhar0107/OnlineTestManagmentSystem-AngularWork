@@ -1,0 +1,58 @@
+<app-logout></app-logout>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<div class="container">
+    <table class="table table-striped" *ngIf="test && test.length > 0  else elseBlock">
+        <thead>
+        <tr>
+            <th>TEST ID</th>
+            <th>TEST TITLE</th>
+            <th>TEST DURATION</th>
+            <th>TEST TOTAL MARKS</th>
+            <th>TEST TOTAL MARKS SCORED</th>
+
+            <th>START TIME</th>
+            <th>END TIME</th>
+            <th>VIEW QUESTION</th>
+            <th>ADD QUESTION</th>
+            <th>DELETE TEST</th>
+            <th>EDIT TEST</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of test">
+                <td> {{e.id}} </td>
+                <td> {{e.title}} </td>
+                <td> {{e.duration}} </td>
+                <td> {{e.testTotalMarks}}</td>
+                <td> {{e.testMarksScored}}</td>
+                <td> {{e.starttime}} </td>
+                <td> {{e.endtime}} </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=view(e)>View questions</button>
+                </td>
+               
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=add(e)>add question</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=delete(e)>Delete</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=update(e)>Edit</button>
+                </td>
+            
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no tests to display,please add the test! </h4>
+    </ng-template>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

@@ -1,0 +1,116 @@
+
+<div align="center">
+    <input  type="button" value="Home" routerLink="/home" class="btn btn-primary">
+</div>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+        <h3></h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>USER ID: </label>
+
+            <input required minlength="1" type="String" pattern="^[a-zA-Z]+[\d]{1,10}$" #userId='ngModel' name="userId" ngModel class="form-control">
+
+            
+            <div *ngIf='userId.errors && userId.touched' class="alert alert-danger">
+
+                <div [hidden]='!userId.errors.required'> Provide User Id </div>
+                <div *ngIf='userId.errors.pattern'>Should be alphanumeric and must starts with a letter </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>password: </label>
+
+            <input required minlength="6"  pattern="(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"  type="password" #password='ngModel' name="password" ngModel class="form-control">
+
+            <div *ngIf='password.errors
+                        && password.touched' class="alert alert-danger">
+
+                <div [hidden]='!password.errors.required'>
+
+                    Provide Password
+
+                </div>
+
+                <div *ngIf='password.errors.pattern'>Must contain at least one number, one uppercase, one special character and lowercase letter, and at least 8 or more characters </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Confirm password: </label>
+
+            <input required minlength="6"  type="password"   #rePassword='ngModel' name="rePassword" ngModel class="form-control">
+
+            <div *ngIf='rePassword.errors
+                        && rePassword.touched' class="alert alert-danger">
+
+                <div [hidden]='!rePassword.errors.required'>
+
+                    Provide Password
+
+                </div>
+
+                <div *ngIf='rePassword.errors.pattern'>Must contain at least one number, one uppercase, one special character and lowercase letter, and at least 8 or more characters </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>PHONE NUMBER: </label>
+
+            <input required length="10" type="number"  #phonenumber='ngModel' name="phonenumber" ngModel class="form-control">
+
+            <div *ngIf='phonenumber.errors && phonenumber.touched' class="alert alert-danger">
+
+                <div [hidden]='!phonenumber.errors.required'> Provide Employee Phone Number </div>
+
+                <div *ngIf='phonenumber.errors.pattern'>Phone number is Incorrect</div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>email: </label>
+
+            <input required minlength="6" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailId='ngModel' name="emailId" ngModel
+                class="form-control">
+
+            <div *ngIf='emailId.errors
+                        && emailId.touched' class="alert alert-danger">
+
+                <div [hidden]='!emailId.errors.required'>
+
+                    Provide Emailid
+
+                </div>
+
+                <div *ngIf='emailId.errors.pattern'>Enter valid Emailid</div>
+
+            </div>
+
+        </div>
+        <input [disabled]="userForm.invalid" type="submit" value="Add User" class="btn btn-primary">
+
+    </form>
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div> 

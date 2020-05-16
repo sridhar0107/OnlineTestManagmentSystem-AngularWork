@@ -1,0 +1,52 @@
+<app-logout></app-logout>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<div class="container">
+    <table class="table table-striped" *ngIf="question && question.length > 0  else elseBlock">
+        <thead>
+        <tr>
+            <th>QUESTION ID</th>
+            <th>QUESTION TITLE</th>
+            <th>QUESTION OPTIONS</th>
+            <th>QUESTION ANSWER</th>
+            <th>QUESTION MARKS</th>
+
+            <th>CHOOSEN ANSWER</th>
+            <th>MARKS SCORED</th>
+            
+            <th>DELETE QUESTION</th>
+            <th>EDIT QUESTION</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of question">
+                <td> {{e.questionId}} </td>
+                <td> {{e.questionTitle}} </td>
+                <td> {{e.questionOptions}} </td>
+                <td> {{e.questionAnswer}}</td>
+                <td> {{e.questionMarks}}</td>
+                
+                <td> {{e.choosenAnswer}} </td>
+                <td> {{e.marksScored}} </td>
+               
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=deleteQuestion(e)>Delete</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=updateQuestion(e)>Edit</button>
+                </td>
+            
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no questions to display,please add the question! </h4>
+    </ng-template>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

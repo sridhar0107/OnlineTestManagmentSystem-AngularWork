@@ -1,0 +1,24 @@
+<app-logout></app-logout>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-sm btn-secondary navbar-dark">
+      <a class="navbar-brand" href="">
+      </a>
+      <ul class="nav nav-pills ">
+      <li class="nav-item ">
+        <a class="nav-link" class="btn btn-outline-success  btn-sm  mr-3" routerLink="/listtest">Display All Tests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" class="btn btn-outline-success btn-sm mr-3"  routerLink="/addtest">Add Test</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" class="btn btn-outline-success btn-sm mr-3"  routerLink="/assigntest">Assign Test</a>
+      </li>
+    </ul>
+    </nav>
+    </div>
+    <router-outlet></router-outlet>

@@ -1,0 +1,71 @@
+
+<!---->
+<div align="center">
+    <input  type="button" value="Home" routerLink="/home" class="btn btn-primary">
+</div>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+        <h3></h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>ADMIN ID: </label> <br>
+
+            <input required minlength="1" pattern="^[a-zA-Z]+[\d]{1,10}$" type="String" #adminId='ngModel' name="adminId" ngModel class="form-control">
+
+            
+            <div *ngIf='adminId.errors && adminId.touched' class="alert alert-danger">
+
+                <div [hidden]='!adminId.errors.required'> Provide User Id </div>
+
+                <div *ngIf='adminId.errors.pattern'>Should be alphanumeric and must starts with a letter</div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>password: </label>
+<br>
+            <input required minlength="6" type="password" #adminPassword='ngModel' name="adminPassword" ngModel class="form-control" >
+
+            <div *ngIf='adminPassword.errors
+                        && adminPassword.touched' class="alert alert-danger">
+
+                <div [hidden]='!adminPassword.errors.required'>
+
+                    Provide Password
+
+                </div>
+
+               
+            </div>
+
+        </div>
+
+        <div>
+        
+        <input [disabled]="userForm.invalid" type="submit"  value="Login" class="btn btn-primary">
+        </div>
+        
+
+    </form>
+<br>
+</div>
+
+<div *ngIf='output1=="AdminId or Password are Incorrect"'  align="center" class="alert alert-warning alert-dismissible fade show">
+    
+    
+   <h2>{{output1}}</h2>
+
+    
+</div>
+
+<router-outlet></router-outlet>

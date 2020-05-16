@@ -1,0 +1,132 @@
+<app-logout></app-logout>
+
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<div class="container">
+
+        <h3>Update QUESTION</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+       
+        <div class="form-group">
+
+            <label>QUESTION ID: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="question.questionId" readonly="readonly" #questionId='ngModel' name="questionId" ngModel class="form-control">
+
+           
+        </div>
+
+        <div class="form-group">
+
+            <label>QUESTION TITLE: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="question.questionTitle" #questionTitle='ngModel' name="questionTitle" ngModel class="form-control">
+
+            <div *ngIf='questionTitle.errors
+                        && questionTitle.touched' class="alert alert-danger">
+
+                <div [hidden]='!questionTitle.errors.required'>
+
+                    Provide Question  Title
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>QUESTION OPTIONS: </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="question.questionOptions" #questionOptions='ngModel' name="questionOptions" ngModel class="form-control">
+
+            <div *ngIf='questionOptions.errors
+                        && questionOptions.touched' class="alert alert-danger">
+
+                <div [hidden]='!questionTitle.errors.required'>
+
+                    Provide Question  Options
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>QUESTION ANSWER: </label>
+
+            <input required minlength="1" length="10" type="number" [(ngModel)]="question.questionAnswer" #questionAnswer='ngModel' name="questionAnswer" ngModel class="form-control">
+
+            <div *ngIf='questionAnswer.errors && questionAnswer.touched' class="alert alert-danger">
+
+                <div [hidden]='!questionAnswer.errors.required'> Provide Question Answer </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>QUESTION MARKS: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="question.questionMarks" #questionMarks='ngModel' name="questionMarks" ngModel class="form-control">
+
+            <div *ngIf='questionMarks.errors && questionMarks.touched' class="alert alert-danger">
+
+                <div [hidden]='!questionMarks.errors.required'> Provide Question Marks </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>CHOOSEN ANSWER: </label>
+
+            <input required minlength="0" type="number" [(ngModel)]="question.choosenAnswer" #choosenAnswer='ngModel' name="choosenAnswer" ngModel class="form-control">
+
+            <!---
+            <div *ngIf='choosenAnswer.errors && choosenAnswer.touched' class="alert alert-danger">
+
+                <div [hidden]='!choosenAnswer.errors.required'> Provide Choosen Answer </div>
+
+
+            </div>
+        -->
+        </div>
+        
+
+        <div class="form-group">
+
+            <label> MARKS SCORED: </label>
+
+            <input required minlength="0" type="number" [(ngModel)]="question.marksScored" #marksScored='ngModel' name="marksScored" ngModel class="form-control">
+<!---
+            <div *ngIf='marksScored.errors && marksScored.touched' class="alert alert-danger">
+
+                <div [hidden]='!marksScored.errors.required'> Provide  Marks Scored </div>
+
+
+            </div>
+        -->
+        </div>
+
+       
+        <input [disabled]="userForm.invalid" type="submit" value="Add Question" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>
